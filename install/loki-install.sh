@@ -25,8 +25,8 @@ msg_ok "Installed Dependencies"
 msg_info "Installing Loki"
 $STD apt-get update
 $STD apt-get install -y loki
-systemctl start grafana-server
-systemctl enable --now -q grafana-server.service
+systemctl start loki
+systemctl enable --now -q loki.service
 msg_ok "Installed Loki"
 
 motd_ssh
