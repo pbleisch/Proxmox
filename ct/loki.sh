@@ -14,9 +14,9 @@ EOF
 header_info
 echo -e "Loading..."
 APP="Loki"
-var_disk="2"
+var_disk="4"
 var_cpu="1"
-var_ram="512"
+var_ram="2048"
 var_os="debian"
 var_version="12"
 variables
@@ -42,18 +42,15 @@ function default_settings() {
   NS=""
   MAC=""
   VLAN=""
-  SSH="yes"
+  SSH="no"
   VERB="no"
   echo_default
 }
 
 function update_script() {
 header_info
-if [[ ! -f /etc/apt/sources.list.d/loki.list ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
-msg_info "Updating ${APP}"
-apt-get update &>/dev/null
-apt-get -y upgrade &>/dev/null
-msg_ok "Updated Successfully"
+if [[ ! -f /etc/systemd/system/loki.service ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
+msg_error "There is currently no update path available."
 exit
 }
 
